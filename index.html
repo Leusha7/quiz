@@ -35,7 +35,6 @@
     th, td{ padding:8px 6px; border-bottom:1px solid #eee; vertical-align:top; }
     th{ font-size:11px; opacity:.85; }
     .muted{ opacity:.7; }
-    .danger{ color:#a00; }
     .right{ text-align:right; }
   </style>
 </head>
@@ -58,13 +57,8 @@
         <div class="sectionTitle">ლიდერბორდი</div>
         <div id="leaderboardBox" class="muted">იტვირთება…</div>
 
-        <button class="btn" onclick="clearLeaderboard()" style="margin-top:10px;">
-          ლიდერბორდის გასუფთავება (ამ ბრაუზერში)
-        </button>
-
         <div class="small">
-          შენიშვნა: შედეგები ინახება მხოლოდ <b>ამ მოწყობილობაზე/ბრაუზერში</b> (LocalStorage).
-          სხვა ტელეფონზე ან სხვა ბრაუზერში არ გადაიტანება.
+          შენიშვნა: შედეგები ინახება ონლაინ (Google Sheet) და გამოჩნდება ყველა მოწყობილობიდან.
         </div>
       </div>
 
@@ -97,6 +91,9 @@
   </div>
 
 <script>
+  // ======= ONLINE LEADERBOARD API (Apps Script) =======
+  const API_URL = "https://script.google.com/macros/s/AKfycbwSxAQNyfFbd0wGAVyNppDrLz05rHIeLK_ALsWt5eK0OKavweB63cxaG6ezDaY6cTsW/exec";
+
   // ======= DATA =======
   const POOL_RAW = [
     ["ხერხემლის დაზიანება", "რისკი"],
@@ -164,7 +161,7 @@
     ["რეზინის შემცველი ქსოვილებისაგან გამოყოფილი ფორმალდეჰიდი", "საფრთხე"],
     ["მაჯის არხის გვირაბის სინდრომი", "რისკი"],
     ["სქოლიოზის განვითარება", "რისკი"],
-    ["ბინოკულარული მხედველობის დაქვეითება", "რისკი"],
+    ["ბინოკულარული მხედველობის დაქვეითება", "რისკი"],  /* დაცვად ქვემოთ ნორმალიზაცია მაინც მუშაობს */
     ["ცხელი ორთქლი", "საფრთხე"],
     ["დაბინძურებული ჰაერი", "საფრთხე"],
     ["ანასხლეტისგან მიღებული დაზიანება", "რისკი"],
@@ -175,7 +172,7 @@
     ["ხელების დაზიანება", "რისკი"],
     ["იატაკის უსწორმასწორო ზედაპირი", "საფრთხე"],
     ["არასათანადო განათება", "საფრთხე"],
-    ["ამობრუნება", "რისკი"], // <-- თუ შემთხვევით შეგრჩა ინგლისური/შეცდომა, ქვემოთ ვასწორებთ
+    ["ამობრუნება", "რისკი"],
     ["სატრანსპორტო საშუალებების კონტაქტი მოსიარულეებთან", "საფრთხე"],
     ["სიჩქარის გადაჭარბება", "საფრთხე"],
     ["გადმოყრილი ტვირთისგან დაზიანება", "რისკი"],
@@ -250,19 +247,15 @@
     ["ადვილად მისაწვდომ ადგილზე ჩამოკიდებული ცეცხლმაქრი", "საფრთხე"]
   ];
 
-  // NOTE: ზემოთ ზოგ ადგილას შეგნებულად დავტოვე "რისკი" მხოლოდ იმის საჩვენებლად,
-  // რომ ქვემოთ გვაქვს ნორმალიზაცია; შენ შეგიძლია საერთოდ წაშალო ეს შენიშვნა.
-
-  // ======= NORMALIZE + DEDUPE (NO DUPLICATES IN A QUIZ) =======
+  // ======= NORMALIZE + DEDUPE =======
   function normalizeLabel(label){
     const v = (label || "").toString().trim().toLowerCase();
     if (v === "riski" || v === "risk" || v === "რისკი") return "რისკი";
     if (v === "safrtxe" || v === "hazard" || v === "საფრთხე") return "საფრთხე";
-    return label; // fallback
+    return label;
   }
 
   function dedupePool(pool){
-    // დუბლს ვჭრით "კითხვა ტექსტით" (პირველს ვტოვებთ)
     const seen = new Set();
     const out = [];
     for (const item of pool){
@@ -277,7 +270,6 @@
   }
 
   const POOL = dedupePool(POOL_RAW);
-
   document.getElementById("poolCount").innerText = POOL.length + " კითხვა";
 
   // ======= QUIZ STATE =======
@@ -287,85 +279,64 @@
   let log = [];
   let currentName = "";
 
-  // ======= STORAGE (LEADERBOARD) =======
-  const STORAGE_KEY = "hazard_risk_leaderboard_v1";
-
-  function loadBoard(){
+  // ======= ONLINE SAVE + ONLINE LEADERBOARD =======
+  async function addResult(name, score, total){
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      const arr = raw ? JSON.parse(raw) : [];
-      return Array.isArray(arr) ? arr : [];
-    } catch {
-      return [];
+      await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify({ name, score, total })
+      });
+    } catch (e) {
+      console.warn("Result save failed:", e);
     }
   }
 
-  function saveBoard(arr){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-  }
-
-  function addResult(name, score, total){
-    const board = loadBoard();
-    board.push({
-      name: name,
-      score: score,
-      total: total,
-      pct: total ? Math.round((score/total)*100) : 0,
-      ts: Date.now()
-    });
-    saveBoard(board);
-  }
-
-  function fmtDate(ts){
-    const d = new Date(ts);
-    // მარტივი ფორმატი: YYYY-MM-DD HH:MM
-    const pad = (n)=> String(n).padStart(2,"0");
-    return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
-  }
-
-  function renderLeaderboard(targetId){
+  async function renderLeaderboard(targetId){
     const box = document.getElementById(targetId);
-    const board = loadBoard();
+    box.innerHTML = '<div class="muted">იტვირთება…</div>';
 
-    if (!board.length){
-      box.innerHTML = '<div class="muted">ჯერ შედეგი არ არის შენახული.</div>';
-      return;
-    }
+    try {
+      const res = await fetch(API_URL, { method: "GET" });
+      const board = await res.json();
 
-    // სორტი: ჯერ % (კლებადი), მერე ქულა (კლებადი), მერე თარიღი (ახალი ზემოთ)
-    const sorted = board.slice().sort((a,b)=>{
-      if (b.pct !== a.pct) return b.pct - a.pct;
-      if (b.score !== a.score) return b.score - a.score;
-      return b.ts - a.ts;
-    }).slice(0, 20);
+      if (!Array.isArray(board) || !board.length){
+        box.innerHTML = '<div class="muted">ჯერ შედეგი არ არის.</div>';
+        return;
+      }
 
-    let html = `
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>სახელი</th>
-            <th class="right">ქულა</th>
-            <th class="right">%</th>
-            <th>თარიღი</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
-    for (let i=0;i<sorted.length;i++){
-      const r = sorted[i];
-      html += `
-        <tr>
-          <td>${i+1}</td>
-          <td>${escapeHtml(r.name || "უცნობი")}</td>
-          <td class="right">${r.score} / ${r.total}</td>
-          <td class="right">${r.pct}%</td>
-          <td class="muted">${fmtDate(r.ts)}</td>
-        </tr>
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>სახელი</th>
+              <th class="right">ქულა</th>
+              <th class="right">%</th>
+            </tr>
+          </thead>
+          <tbody>
       `;
+
+      for (let i=0;i<board.length;i++){
+        const r = board[i];
+        html += `
+          <tr>
+            <td>${i+1}</td>
+            <td>${escapeHtml(r.name || "უცნობი")}</td>
+            <td class="right">${r.score} / ${r.total}</td>
+            <td class="right">${r.pct}%</td>
+          </tr>
+        `;
+      }
+
+      html += "</tbody></table>";
+      box.innerHTML = html;
+
+    } catch (e) {
+      box.innerHTML = '<div class="muted">ვერ ჩაიტვირთა ლიდერბორდი. (შეამოწმე Deploy: Anyone)</div>';
+      console.warn("Leaderboard load failed:", e);
     }
-    html += "</tbody></table>";
-    box.innerHTML = html;
   }
 
   function escapeHtml(str){
@@ -375,14 +346,6 @@
       .replaceAll(">","&gt;")
       .replaceAll('"',"&quot;")
       .replaceAll("'","&#039;");
-  }
-
-  function clearLeaderboard(){
-    if (!confirm("ნამდვილად გინდა ლიდერბორდის გასუფთავება ამ ბრაუზერში?")) return;
-    localStorage.removeItem(STORAGE_KEY);
-    renderLeaderboard("leaderboardBox");
-    const endBox = document.getElementById("leaderboardBoxEnd");
-    if (endBox) endBox.innerHTML = '<div class="muted">ლიდერბორდი გასუფთავდა.</div>';
   }
 
   // ======= QUIZ LOGIC =======
@@ -403,7 +366,6 @@
     }
     currentName = name;
 
-    // 50 უნიკალური კითხვა (დუბლები უკვე მოჭრილია POOL-ში)
     const copy = POOL.slice();
     shuffle(copy);
     quiz = copy.slice(0, Math.min(50, copy.length));
@@ -433,7 +395,7 @@
     else render();
   }
 
-  function finish(){
+  async function finish(){
     document.getElementById("quiz").style.display = "none";
     document.getElementById("end").style.display = "block";
 
@@ -441,8 +403,7 @@
     document.getElementById("scorePill").innerText = "შედეგი: " + score + " / " + quiz.length + " (" + pct + "%)";
     document.getElementById("whoPill").innerText = "მონაწილე: " + currentName;
 
-    // Save result + refresh leaderboard
-    addResult(currentName, score, quiz.length);
+    await addResult(currentName, score, quiz.length);
     renderLeaderboard("leaderboardBoxEnd");
   }
 
