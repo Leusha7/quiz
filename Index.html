@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <title>საჭმლის მომნელებელი სისტემის 50 კითხვიანი ტესტი</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    .question-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 24px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #007bff;
+      background-color: #f0f7ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>საჭმლის მომნელებელი სისტემის ტესტი</h1>
+  <h2>50 კითხვიანი თვითშემოწმება</h2>
+
+  <form id="quizForm">
+    <div class="question">
+      <div class="question-title">
+        1. რა არის ადამიანის საჭმლის მომნელებელი სისტემის მთავარი ფუნქცია?
+      </div>
+      <label><input type="radio" name="q1" value="a"> სისხლის გადატუმბვა ორგანიზმში</label><br>
+      <label><input type="radio" name="q1" value="b"> ჰორმონების გამომუშავება ზრდისთვის</label><br>
+      <label><input type="radio" name="q1" value="c"> საკვების დამუშავება და ენერგიის მიღება</label><br>
+      <label><input type="radio" name="q1" value="d"> ჟანგბადის დაგროვება ფილტვებში</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        2. სად იწყება ნახშირწყლების ქიმიური მონელება?
+      </div>
+      <label><input type="radio" name="q2" value="a"> კუჭში</label><br>
+      <label><input type="radio" name="q2" value="b"> საყლაპავში</label><br>
+      <label><input type="radio" name="q2" value="c"> პირის ღრუში</label><br>
+      <label><input type="radio" name="q2" value="d"> საჭმლის მომნელებელ სადინარში</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        3. რომელი ფერმენტი იწყებს ნახშირწყლების ქიმიურ მონელებას ნერწყვში?
+      </div>
+      <label><input type="radio" name="q3" value="a"> პეპსინი</label><br>
+      <label><input type="radio" name="q3" value="b"> ნერწყვის ამილაზა</label><br>
+      <label><input type="radio" name="q3" value="c"> ლიპაზა</label><br>
+      <label><input type="radio" name="q3" value="d"> ტრიფსინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        4. რა ეწოდება საკვების და ნერწყვის ნარევს, რომელიც ყლაპვის დროს წარმოიქმნება?
+      </div>
+      <label><input type="radio" name="q4" value="a"> ქაიმი</label><br>
+      <label><input type="radio" name="q4" value="b"> ბოლუსი</label><br>
+      <label><input type="radio" name="q4" value="c"> მიკრობი</label><br>
+      <label><input type="radio" name="q4" value="d"> ფიბრინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        5. რომელი მოძრაობა გადააქვს საკვებს საყლაპავიდან კუჭში?
+      </div>
+      <label><input type="radio" name="q5" value="a"> მასტიკაცია (დაღეჭვა)</label><br>
+      <label><input type="radio" name="q5" value="b"> პერისტალტიკა</label><br>
+      <label><input type="radio" name="q5" value="c"> ფილტრაცია</label><br>
+      <label><input type="radio" name="q5" value="d"> დიფუზია</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        6. რომელი ორგანო გარდაქმნის საკვების ბოლუსს მჟავე ქაიმად?
+      </div>
+      <label><input type="radio" name="q6" value="a"> ღვიძლი</label><br>
+      <label><input type="radio" name="q6" value="b"> კუჭი</label><br>
+      <label><input type="radio" name="q6" value="c"> ნაღვლის ბუშტი</label><br>
+      <label><input type="radio" name="q6" value="d"> პანკრეასი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        7. რომელი ნივთიერება ემულგირებს ცხიმებს წვრილი ნაწლავის ღრუში?
+      </div>
+      <label><input type="radio" name="q7" value="a"> მარილმჟავა (HCl)</label><br>
+      <label><input type="radio" name="q7" value="b"> ნერწყვი</label><br>
+      <label><input type="radio" name="q7" value="c"> ნაღველი</label><br>
+      <label><input type="radio" name="q7" value="d"> პეპსინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        8. სად ხდება ორგანიზმში საკვებისგან მიღებული საკვები ნივთიერებების უმეტესობის შთანთქმა?
+      </div>
+      <label><input type="radio" name="q8" value="a"> კუჭში</label><br>
+      <label><input type="radio" name="q8" value="b"> ზემო ნაწლავში (ჯეიუმში)</label><br>
+      <label><input type="radio" name="q8" value="c"> მსხვილ ნაწლავში</label><br>
+      <label><input type="radio" name="q8" value="d"> სწორი ნაწლავში</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        9. რომელი ორგანო შთანთქავს წყალს და ელექტროლიტებს დარჩენილი მასიდან?
+      </div>
+      <label><input type="radio" name="q9" value="a"> კუჭი</label><br>
+      <label><input type="radio" name="q9" value="b"> ღვიძლი</label><br>
+      <label><input type="radio" name="q9" value="c"> მსხვილი ნაწლავი (კოლონი)</label><br>
+      <label><input type="radio" name="q9" value="d"> ნაღვლის ბუშტი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        10. რომელი მცირე თითისებრი წარმონაქმნები შთანთქავს საკვებს წვრილ ნაწლავში?
+      </div>
+      <label><input type="radio" name="q10" value="a"> ვილიები</label><br>
+      <label><input type="radio" name="q10" value="b"> სფინქტერები</label><br>
+      <label><input type="radio" name="q10" value="c"> ჯირკვლები</label><br>
+      <label><input type="radio" name="q10" value="d"> სადინრები</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        11. რომელი ორგანო აწარმოებს ნაღველს?
+      </div>
+      <label><input type="radio" name="q11" value="a"> ნაღვლის ბუშტი</label><br>
+      <label><input type="radio" name="q11" value="b"> პანკრეასი</label><br>
+      <label><input type="radio" name="q11" value="c"> ღვიძლი</label><br>
+      <label><input type="radio" name="q11" value="d"> კუჭი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        12. სად ინახება ნაღველი შენახვისთვის?
+      </div>
+      <label><input type="radio" name="q12" value="a"> კუჭში</label><br>
+      <label><input type="radio" name="q12" value="b"> ნაღვლის ბუშტში</label><br>
+      <label><input type="radio" name="q12" value="c"> პანკრეასში</label><br>
+      <label><input type="radio" name="q12" value="d"> მსხვილ ნაწლავში</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        13. რომელი ფერმენტი შლის ცილებს კუჭში?
+      </div>
+      <label><input type="radio" name="q13" value="a"> ამილაზა</label><br>
+      <label><input type="radio" name="q13" value="b"> პეპსინი</label><br>
+      <label><input type="radio" name="q13" value="c"> ლაქტაზა</label><br>
+      <label><input type="radio" name="q13" value="d"> სუკრაზა</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        14. რომელი ორგანო გამოიმუშავებს ინსულინს და გლუკაგონს?
+      </div>
+      <label><input type="radio" name="q14" value="a"> ღვიძლი</label><br>
+      <label><input type="radio" name="q14" value="b"> პანკრეასი</label><br>
+      <label><input type="radio" name="q14" value="c"> კუჭი</label><br>
+      <label><input type="radio" name="q14" value="d"> მსხვილი ნაწლავი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        15. რომელი ორგანო ასუფთავებს სისხლს ტოქსინებისგან და მეტაბოლიზმში მონაწილეობს?
+      </div>
+      <label><input type="radio" name="q15" value="a"> კუჭი</label><br>
+      <label><input type="radio" name="q15" value="b"> ღვიძლი</label><br>
+      <label><input type="radio" name="q15" value="c"> ნაღვლის ბუშტი</label><br>
+      <label><input type="radio" name="q15" value="d"> პანკრეასი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        16. რომელი ნაწილია საჭმლის მომნელებელი ტრაქტის ნაწილი და იწყება პირის ღრუში?
+      </div>
+      <label><input type="radio" name="q16" value="a"> ალიმენტარული სადინი</label><br>
+      <label><input type="radio" name="q16" value="b"> ურინალური სადინი</label><br>
+      <label><input type="radio" name="q16" value="c"> სუნთქვის სისტემა</label><br>
+      <label><input type="radio" name="q16" value="d"> ნერვული სისტემა</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        17. რომელი სტრuktურა იცავს ტრაქეას საკვების მოხვედრისგან ყლაპვის დროს?
+      </div>
+      <label><input type="radio" name="q17" value="a"> ეპიგლოტისი</label><br>
+      <label><input type="radio" name="q17" value="b"> ნაღვლის ბუშტი</label><br>
+      <label><input type="radio" name="q17" value="c"> აპენდიქსი</label><br>
+      <label><input type="radio" name="q17" value="d"> პანკრეასი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        18. კუჭის რომელ ნაწილში ხდება ქიმიური მონელება ყველაზე ინტენსიურად?
+      </div>
+      <label><input type="radio" name="q18" value="a"> კარდიული ნაწილი</label><br>
+      <label><input type="radio" name="q18" value="b"> ფუნდუსი</label><br>
+      <label><input type="radio" name="q18" value="c"> კორპუსი</label><br>
+      <label><input type="radio" name="q18" value="d"> პილორული ნაწილი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        19. რომელი ნივთიერება ქმნის კუჭის მჟავე გარემოს?
+      </div>
+      <label><input type="radio" name="q19" value="a"> ნაღველი</label><br>
+      <label><input type="radio" name="q19" value="b"> მარილმჟავა</label><br>
+      <label><input type="radio" name="q19" value="c"> ამილაზა</label><br>
+      <label><input type="radio" name="q19" value="d"> ტრიფსინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        20. რომელი ჰორმონი ასტიმულირებს კუჭში მჟავის გამოყოფას?
+      </div>
+      <label><input type="radio" name="q20" value="a"> სეკრეტინი</label><br>
+      <label><input type="radio" name="q20" value="b"> გასტრინი</label><br>
+      <label><input type="radio" name="q20" value="c"> CCK</label><br>
+      <label><input type="radio" name="q20" value="d"> ინსულინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        21. რომელი ნაწილია წვრილი ნაწლავის პირველი სეგმენტი?
+      </div>
+      <label><input type="radio" name="q21" value="a"> ჯეიუმი</label><br>
+      <label><input type="radio" name="q21" value="b"> ილეუმი</label><br>
+      <label><input type="radio" name="q21" value="c"> დუოდენუმი</label><br>
+      <label><input type="radio" name="q21" value="d"> კოლონი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        22. რომელი ნაწილია წვრილი ნაწლავის შუა სეგმენტი?
+      </div>
+      <label><input type="radio" name="q22" value="a"> ჯეიუმი</label><br>
+      <label><input type="radio" name="q22" value="b"> ილეუმი</label><br>
+      <label><input type="radio" name="q22" value="c"> დუოდენუმი</label><br>
+      <label><input type="radio" name="q22" value="d"> რექტუმი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        23. რომელი ნაწილია წვრილი ნაწლავის ბოლო სეგმენტი?
+      </div>
+      <label><input type="radio" name="q23" value="a"> ჯეიუმი</label><br>
+      <label><input type="radio" name="q23" value="b"> ილეუმი</label><br>
+      <label><input type="radio" name="q23" value="c"> დუოდენუმი</label><br>
+      <label><input type="radio" name="q23" value="d"> სტომახი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        24. რომელი სფინქტერი აკონტროლებს საკვების გადასვლას კუჭიდან დუოდენუმში?
+      </div>
+      <label><input type="radio" name="q24" value="a"> ზედა საყლაპავის სფინქტერი</label><br>
+      <label><input type="radio" name="q24" value="b"> ქვედა საყლაპავის სფინქტერი</label><br>
+      <label><input type="radio" name="q24" value="c"> პილორული სფინქტერი</label><br>
+      <label><input type="radio" name="q24" value="d"> ანალური სფინქტერი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        25. რომელი ნაწილია მსხვილი ნაწლავის პირველი სექცია?
+      </div>
+      <label><input type="radio" name="q25" value="a"> ცეკუმი</label><br>
+      <label><input type="radio" name="q25" value="b"> ტრანსვერსალური კოლონი</label><br>
+      <label><input type="radio" name="q25" value="c"> სიგმოიდური კოლონი</label><br>
+      <label><input type="radio" name="q25" value="d"> რექტუმი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        26. რომელი ნაწილია მსხვილი ნაწლავის ბოლო ნაწილი?
+      </div>
+      <label><input type="radio" name="q26" value="a"> ცეკუმი</label><br>
+      <label><input type="radio" name="q26" value="b"> ტრანსვერსალური კოლონი</label><br>
+      <label><input type="radio" name="q26" value="c"> სიგმოიდური კოლონი</label><br>
+      <label><input type="radio" name="q26" value="d"> რექტუმი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        27. რომელი სტრუქტურა უზრუნველყოფს ფეკალური მასის საბოლოო გამოსვლას ორგანიზმიდან?
+      </div>
+      <label><input type="radio" name="q27" value="a"> ანუსი</label><br>
+      <label><input type="radio" name="q27" value="b"> რექტუმი</label><br>
+      <label><input type="radio" name="q27" value="c"> ილეუმი</label><br>
+      <label><input type="radio" name="q27" value="d"> ჯეიუმი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        28. რომელი პროცესი მოიცავს საკვების მექანიკურ დაჩლევას პირის ღრუში?
+      </div>
+      <label><input type="radio" name="q28" value="a"> დაგლეჯა</label><br>
+      <label><input type="radio" name="q28" value="b"> მასტიკაცია</label><br>
+      <label><input type="radio" name="q28" value="c"> პერისტალტიკა</label><br>
+      <label><input type="radio" name="q28" value="d"> დიფუზია</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        29. რომელი ფერმენტი შლის რძის შაქარს (ლაქტოზას)?
+      </div>
+      <label><input type="radio" name="q29" value="a"> ლაქტაზა</label><br>
+      <label><input type="radio" name="q29" value="b"> სუკრაზა</label><br>
+      <label><input type="radio" name="q29" value="c"> მალტაზა</label><br>
+      <label><input type="radio" name="q29" value="d"> პეპტიდაზა</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        30. რომელი ენზიმი მეტად ტრადიციულად არის დაკავშირებული ცხიმების მონელებასთან მცირე ნაწლავში?
+      </div>
+      <label><input type="radio" name="q30" value="a"> ამილაზა</label><br>
+      <label><input type="radio" name="q30" value="b"> ლიპაზა</label><br>
+      <label><input type="radio" name="q30" value="c"> ტრიფსინი</label><br>
+      <label><input type="radio" name="q30" value="d"> პეპსინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        31. რომელი ნერვი აწვდის პარასიმპათიკურ ინერვაციას საჭმლის მომნელებელ სისტემას?
+      </div>
+      <label><input type="radio" name="q31" value="a"> ფრენიკის ნერვი</label><br>
+      <label><input type="radio" name="q31" value="b"> ვაგუსის ნერვი</label><br>
+      <label><input type="radio" name="q31" value="c"> საიატიკური ნერვი</label><br>
+      <label><input type="radio" name="q31" value="d"> რადიალური ნერვი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        32. რომელი პლექსუსი მდებარეობს ნაწლავის გულზედა (მუსკულარულ) შრეებს შორის და აკონტროლებს მოტილობას?
+      </div>
+      <label><input type="radio" name="q32" value="a"> მაისნერის პლექსუსი</label><br>
+      <label><input type="radio" name="q32" value="b"> აუდერბახის პლექსუსი</label><br>
+      <label><input type="radio" name="q32" value="c"> ბრაჰიალური პლექსუსი</label><br>
+      <label><input type="radio" name="q32" value="d"> საკრალური პლექსუსი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        33. რომელი პლექსუსი მდებარეობს ნაწლავის სუბმუკოზაში და აკონტროლებს სეკრეციას?
+      </div>
+      <label><input type="radio" name="q33" value="a"> მაისნერის პლექსუსი</label><br>
+      <label><input type="radio" name="q33" value="b"> აუდერბახის პლექსუსი</label><br>
+      <label><input type="radio" name="q33" value="c"> ბრაჰიალური პლექსუსი</label><br>
+      <label><input type="radio" name="q33" value="d"> საკრალური პლექსუსი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        34. რომელი ჰორმონი ასტიმულირებს პანკრეასის ბიკარბონატის მდიდარი სეკრეციას?
+      </div>
+      <label><input type="radio" name="q34" value="a"> გასტრინი</label><br>
+      <label><input type="radio" name="q34" value="b"> სეკრეტინი</label><br>
+      <label><input type="radio" name="q34" value="c"> CCK</label><br>
+      <label><input type="radio" name="q34" value="d"> ინსულინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        35. რომელი ჰორმონი ასტიმულირებს ნაღვლის ბუშტის შეკუმშვას და პანკრეასის ფერმენტების გამოყოფას?
+      </div>
+      <label><input type="radio" name="q35" value="a"> გასტრინი</label><br>
+      <label><input type="radio" name="q35" value="b"> სეკრეტინი</label><br>
+      <label><input type="radio" name="q35" value="c"> CCK</label><br>
+      <label><input type="radio" name="q35" value="d"> ინსულინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        36. სად ხდება B12 ვიტამინის შთანთქმა?
+      </div>
+      <label><input type="radio" name="q36" value="a"> დუოდენუმში</label><br>
+      <label><input type="radio" name="q36" value="b"> ჯეიუმში</label><br>
+      <label><input type="radio" name="q36" value="c"> ილეუმში</label><br>
+      <label><input type="radio" name="q36" value="d"> კოლონში</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        37. რომელი ორგანო წარმოებს უილსონის დაავადების დროს დაზიანებას ძირითადად?
+      </div>
+      <label><input type="radio" name="q37" value="a"> კუჭი</label><br>
+      <label><input type="radio" name="q37" value="b"> ღვიძლი</label><br>
+      <label><input type="radio" name="q37" value="c"> ნაღვლის ბუშტი</label><br>
+      <label><input type="radio" name="q37" value="d"> პანკრეასი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        38. რომელი მდგომარეობა ახასიათებს მჟავის ან უკან მოხვედრას საყლაპავში?
+      </div>
+      <label><input type="radio" name="q38" value="a"> პეპტიური წყლული</label><br>
+      <label><input type="radio" name="q38" value="b"> GERD</label><br>
+      <label><input type="radio" name="q38" value="c"> კოლიტი</label><br>
+      <label><input type="radio" name="q38" value="d"> ჰეპატიტი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        39. რომელი დაავადება ხასიათდება მსხვილი ნაწლავის ქრონიკული ანთებით?
+      </div>
+      <label><input type="radio" name="q39" value="a"> კრონის დაავადება</label><br>
+      <label><input type="radio" name="q39" value="b"> ულცეროზული კოლიტი</label><br>
+      <label><input type="radio" name="q39" value="c"> აპენდიციტი</label><br>
+      <label><input type="radio" name="q39" value="d"> პანკრეატიტი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        40. რომელი დაავადება უფრო ხშირად აზიანებს სრული GI ტრაქტს პირიდან ანუსამდე?
+      </div>
+      <label><input type="radio" name="q40" value="a"> კრონის დაავადება</label><br>
+      <label><input type="radio" name="q40" value="b"> ულცეროზული კოლიტი</label><br>
+      <label><input type="radio" name="q40" value="c"> პეპტიური წყლული</label><br>
+      <label><input type="radio" name="q40" value="d"> ჰეპატიტი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        41. რომელი ნაწილია მიმაგრებული ცეკუმთან, როგორც მცირე გამონაზარდი?
+      </div>
+      <label><input type="radio" name="q41" value="a"> აპენდიქსი</label><br>
+      <label><input type="radio" name="q41" value="b"> რექტუმი</label><br>
+      <label><input type="radio" name="q41" value="c"> ჯეიუმი</label><br>
+      <label><input type="radio" name="q41" value="d"> ილეუმი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        42. რომელი მოძრაობა ნელად გადაადგილებს შემცველობას მსხვილ ნაწლავში?
+      </div>
+      <label><input type="radio" name="q42" value="a"> მასობრივი მოძრაობები</label><br>
+      <label><input type="radio" name="q42" value="b"> პერისტალტიკა</label><br>
+      <label><input type="radio" name="q42" value="c"> სეგმენტაცია</label><br>
+      <label><input type="radio" name="q42" value="d"> დიფუზია</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        43. რომელი ნივთიერება იცავს კუჭის ლორწოვანს მჟავე გარემოსგან?
+      </div>
+      <label><input type="radio" name="q43" value="a"> მუკუსი</label><br>
+      <label><input type="radio" name="q43" value="b"> ნაღველი</label><br>
+      <label><input type="radio" name="q43" value="c"> ამილაზა</label><br>
+      <label><input type="radio" name="q43" value="d"> ტრიფსინი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        44. რომელი ორგანო ეფექტურად ინახავს და ათავისუფლებს რკინის მარაგს?
+      </div>
+      <label><input type="radio" name="q44" value="a"> კუჭი</label><br>
+      <label><input type="radio" name="q44" value="b"> ღვიძლი</label><br>
+      <label><input type="radio" name="q44" value="c"> ნაღვლის ბუშტი</label><br>
+      <label><input type="radio" name="q44" value="d"> პანკრეასი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        45. რომელი მდგომარეობა ხასიათდება პანკრეასის თვითდამუშავებით ფერმენტების გააქტიურების გამო?
+      </div>
+      <label><input type="radio" name="q45" value="a"> პანკრეატიტი</label><br>
+      <label><input type="radio" name="q45" value="b"> კოლიტი</label><br>
+      <label><input type="radio" name="q45" value="c"> ჰეპატიტი</label><br>
+      <label><input type="radio" name="q45" value="d"> აპენდიციტი</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        46. რომელი კვლევა გამოიყენება ზედა საჭმლის მომნელებელი ტრაქტის ვიზუალიზაციისთვის?
+      </div>
+      <label><input type="radio" name="q46" value="a"> კოლონოსკოპია</label><br>
+      <label><input type="radio" name="q46" value="b"> ენდოსკოპია</label><br>
+      <label><input type="radio" name="q46" value="c"> ულტრაბგერითი</label><br>
+      <label><input type="radio" name="q46" value="d"> MRI</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        47. რომელი კვლევა გამოიყენება მსხვილი ნაწლავის და რექტუმის ვიზუალიზაციისთვის?
+      </div>
+      <label><input type="radio" name="q47" value="a"> კოლონოსკოპია</label><br>
+      <label><input type="radio" name="q47" value="b"> ენდოსკოპია</label><br>
+      <label><input type="radio" name="q47" value="c"> ულტრაბგერითი</label><br>
+      <label><input type="radio" name="q47" value="d"> MRI</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        48. რას ეწოდება საჭმლის პირით მიღების პროცესს?
+      </div>
+      <label><input type="radio" name="q48" value="a"> პროპულსია</label><br>
+      <label><input type="radio" name="q48" value="b"> ინგესტია</label><br>
+      <label><input type="radio" name="q48" value="c"> დიფუზია</label><br>
+      <label><input type="radio" name="q48" value="d"> ექსკრეცია</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        49. რომელი პროცესი მოიცავს ორგანიზმიდან ნარჩენი მასის გამოდევნას?
+      </div>
+      <label><input type="radio" name="q49" value="a"> დიფუზია</label><br>
+      <label><input type="radio" name="q49" value="b"> შთანთქმა</label><br>
+      <label><input type="radio" name="q49" value="c"> მექანიკური მონელება</label><br>
+      <label><input type="radio" name="q49" value="d"> დეფეკაცია</label><br>
+    </div>
+
+    <div class="question">
+      <div class="question-title">
+        50. რომელი ორგანო მონაწილეობს როგორც საჭმლის მომნელებაში, ასევე სისხლის შედედების ფაქტორების წარმოქმნაში?
+      </div>
+      <label><input type="radio" name="q50" value="a"> კუჭი</label><br>
+      <label><input type="radio" name="q50" value="b"> ღვიძლი</label><br>
+      <label><input type="radio" name="q50" value="c"> ნაღვლის ბუშტი</label><br>
+      <label><input type="radio" name="q50" value="d"> პანკრეასი</label><br>
+    </div>
+    <div style="text-align:center; margin-top: 20px;">
+      <button type="button" onclick="calculateResult()">შედეგის ნახვა</button>
+    </div>
+  </form>
+
+  <div id="result" style="display:none;"></div>
+
+  <script>
+    function calculateResult() {
+      const correctAnswers = {
+        q1: "c",
+        q2: "c",
+        q3: "b",
+        q4: "b",
+        q5: "b",
+        q6: "b",
+        q7: "c",
+        q8: "b",
+        q9: "c",
+        q10: "a",
+        q11: "c",
+        q12: "b",
+        q13: "b",
+        q14: "b",
+        q15: "b",
+        q16: "a",
+        q17: "a",
+        q18: "c",
+        q19: "b",
+        q20: "b",
+        q21: "c",
+        q22: "a",
+        q23: "b",
+        q24: "c",
+        q25: "a",
+        q26: "d",
+        q27: "a",
+        q28: "b",
+        q29: "a",
+        q30: "b",
+        q31: "b",
+        q32: "b",
+        q33: "a",
+        q34: "b",
+        q35: "c",
+        q36: "c",
+        q37: "b",
+        q38: "b",
+        q39: "b",
+        q40: "a",
+        q41: "a",
+        q42: "c",
+        q43: "a",
+        q44: "b",
+        q45: "a",
+        q46: "b",
+        q47: "a",
+        q48: "b",
+        q49: "d",
+        q50: "b"
+      };
+
+      let score = 0;
+      let total = Object.keys(correctAnswers).length;
+      let unanswered = [];
+
+      for (const q in correctAnswers) {
+        const selected = document.querySelector('input[name="' + q + '"]:checked');
+        if (!selected) {
+          unanswered.push(q);
+          continue;
+        }
+        if (selected.value === correctAnswers[q]) {
+          score++;
+        }
+      }
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.style.display = "block";
+
+      let message = "შენი ქულა: " + score + " / " + total + "<br>";
+
+      const percent = Math.round((score / total) * 100);
+      message += "შედეგი პროცენტებში: " + percent + "%<br><br>";
+
+      if (unanswered.length > 0) {
+        message += "გაითვალისწინე, რომ " + unanswered.length +
+          " კითხვა უპასუხოდ დაგრჩა. ეცადე ყველა უპასუხო შემდეგ ცდაზე.<br><br>";
+      }
+
+      if (percent === 100) {
+        message += "შესანიშნავია! ძალიან კარგად იცი საჭმლის მომნელებელი სისტემა.";
+      } else if (percent >= 80) {
+        message += "ძალიან კარგი შედეგია. მცირე გამეორება კიდევ უფრო გაგაღრმავებს ცოდნას.";
+      } else if (percent >= 60) {
+        message += "საშუალო შედეგია. რეკომენდირებულია თეორიის გამტკიცება და ხელახლა முயერა.";
+      } else {
+        message += "ჯობს საფუძვლიანად გადახედო საჭმლის მომნელებელი სისტემის მასალას და შემდეგ ისევ სცადო.";
+      }
+
+      resultDiv.innerHTML = message;
+    }
+  </script>
+</body>
+</html>
